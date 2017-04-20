@@ -9,14 +9,17 @@ const temp = require('./../build/core.js')
 const manifest = require('./../build/asset-manifest.json')
 const ServerRender = require('./lib/server-render').default
 
-const { webpackDev } = require('./middlewares/webpack-dev')
+const { webpackDev, webpackHot } = require('./middlewares/webpack-dev')
 
 const app = express()
 app.server = http.createServer(app)
 
 app.use(express.static(path.join(__dirname, '..', 'build')))
 
-// app.use(webpackDev)
+if (app.get('env') === 'development') {
+  app.use(webpackDev)
+  app.use(webpackHot)
+}
 
 app.get('*', (req, res) => {
   const context = {}
