@@ -1,8 +1,3 @@
-/* TODO
-- Préparer un tableau avec les loader et un avec les plugins communs
-- Récupérer la config express dans react-server-sided
-- Send le core.js dans un template JS vers express a la place de la fonction ssr
-*/
 const autoprefixer = require('autoprefixer')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')

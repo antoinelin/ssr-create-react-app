@@ -1,3 +1,5 @@
+// TODO : Simplifier la page avec un markeup simple en template js
+// + retourner une method buildPage qui prend en param le routeur et le template
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 

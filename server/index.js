@@ -4,6 +4,7 @@ require('babel-core/register')({ presets: ['es2015', 'react'] })
 const http = require('http')
 const path = require('path')
 const express = require('express')
+const gzip = require('compression')
 
 const temp = require('./../build/core.js')
 const manifest = require('./../build/asset-manifest.json')
@@ -13,6 +14,8 @@ const { webpackDev, webpackHot } = require('./middlewares/webpack-dev')
 
 const app = express()
 app.server = http.createServer(app)
+
+app.use(gzip())
 
 app.use(express.static(path.join(__dirname, '..', 'build')))
 
