@@ -541,7 +541,7 @@ babel-plugin-syntax-object-rest-spread@^6.8.0:
   version "6.13.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
 
-babel-plugin-syntax-trailing-function-commas@^6.13.0, babel-plugin-syntax-trailing-function-commas@^6.22.0:
+babel-plugin-syntax-trailing-function-commas@^6.13.0, babel-plugin-syntax-trailing-function-commas@^6.22.0, babel-plugin-syntax-trailing-function-commas@^6.5.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-6.22.0.tgz#ba0360937f8d06e40180a43fe0d5616fff532cf3"
 
@@ -688,7 +688,7 @@ babel-plugin-transform-es2015-modules-amd@^6.24.1, babel-plugin-transform-es2015
     babel-runtime "^6.22.0"
     babel-template "^6.24.1"
 
-babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.6.0:
+babel-plugin-transform-es2015-modules-commonjs@^6.24.1, babel-plugin-transform-es2015-modules-commonjs@^6.6.0, babel-plugin-transform-es2015-modules-commonjs@^6.7.4:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-es2015-modules-commonjs/-/babel-plugin-transform-es2015-modules-commonjs-6.24.1.tgz#d3e310b40ef664a36622200097c6d440298f2bfe"
   dependencies:
@@ -950,6 +950,13 @@ babel-preset-jest@^18.0.0:
   resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-18.0.0.tgz#84faf8ca3ec65aba7d5e3f59bbaed935ab24049e"
   dependencies:
     babel-plugin-jest-hoist "^18.0.0"
+
+babel-preset-node6@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-node6/-/babel-preset-node6-11.0.0.tgz#0835994517248985a29d18f6d465dab16bb8a7d8"
+  dependencies:
+    babel-plugin-syntax-trailing-function-commas "^6.5.0"
+    babel-plugin-transform-es2015-modules-commonjs "^6.7.4"
 
 babel-preset-react-app@^2.2.0:
   version "2.2.0"
@@ -3730,7 +3737,7 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
-node-emoji@^1.4.1:
+node-emoji@^1.4.1, node-emoji@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.5.1.tgz#fd918e412769bf8c448051238233840b2aff16a1"
   dependencies:

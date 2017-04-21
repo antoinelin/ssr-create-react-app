@@ -5,7 +5,7 @@ const ReactDOMServer = require('react-dom/server')
 
 const catchMarkeup = require('./lib/catch')
 
-module.exports = (ServerRender, req, scriptFilename, context) => {
+export default (ServerRender, req, scriptFilename, context) => {
   let html
   const css = catchMarkeup.collect(() => {
     html = ReactDOMServer.renderToString(
