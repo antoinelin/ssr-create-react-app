@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 
 import Welcome from './components/Welcome'
 
-// import './ressources/theme/stylesheets/Default.css'
+import './ressources/theme/stylesheets/Default.css'
 
 const Routes: React.StatelessComponent<{}> = () => (
   <Switch>

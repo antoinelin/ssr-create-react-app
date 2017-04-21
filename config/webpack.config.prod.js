@@ -103,13 +103,6 @@ module.exports = [{
     },
   },
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.(js|jsx)$/,
-    //     loader: 'eslint',
-    //     include: paths.appSrc,
-    //   },
-    // ],
     loaders: [
       commonLoaders.concat([
         {
@@ -185,19 +178,13 @@ module.exports = [{
     },
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.(js|jsx)$/,
-        include: [paths.servDir, paths.appSrc],
-        loader: 'eslint',
-      },
-    ],
     loaders: [
       commonLoaders.concat([
         {
           test: /\.css$/,
           include: [paths.servDir, paths.appSrc],
-          loader: path.join(__dirname, '..', 'server', 'lib', 'catch') + '!css-loader' }, // eslint-disable-line
+          loader: 'css-loader',
+        }, // eslint-disable-line
         {
           test: /\.(js|jsx)$/,
           include: [paths.servDir, paths.appSrc],

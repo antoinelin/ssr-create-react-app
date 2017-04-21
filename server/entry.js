@@ -1,32 +1,36 @@
-// TODO : Simplifier la page avec un markeup simple en template js
-// + retourner une method buildPage qui prend en param le routeur et le template
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
+const { StaticRouter } = require('react-router')
 
-const catchMarkeup = require('./lib/catch')
+const Routes = require('./../src/Routes').default
 
-export default (ServerRender, req, scriptFilename, context) => {
-  let html
-  const css = catchMarkeup.collect(() => {
-    html = ReactDOMServer.renderToString(
-      <ServerRender
-        location={req.url}
-        context={context}
-      />,
-    )
-  })
-  return ReactDOMServer.renderToString(
+const getHtml = (location, context) => ReactDOMServer.renderToString(
+  <StaticRouter
+    location={location}
+    context={context}
+  >
+    <Routes />
+  </StaticRouter>,
+)
+
+const buildApp = ({ html, scriptFilename, styleFilename }) => {
+  return `
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>FROM THE SERVER</title>
-        <style id="server-side-style" dangerouslySetInnerHTML={{ __html: css }} />
+        <link rel="stylesheet" href=${styleFilename}>
       </head>
       <body>
-        <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
-        <script src={scriptFilename} />
+        <div id="root">${html}</div>
+        <script src=${scriptFilename}></script>
       </body>
-    </html>,
-  )
+    </html>
+  `
+}
+
+export default (req, scriptFilename, styleFilename, context) => {
+  const html = getHtml(req.url, context)
+  return buildApp({ html, scriptFilename, styleFilename })
 }

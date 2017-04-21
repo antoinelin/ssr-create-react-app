@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Welcome: React.StatelessComponent<{}> = () => (
   <div className="Welcome">
     <div className="Welcome-header">
-      <img src={process.env.PUBLIC_URL + '/imgs/logo.svg'} className="Welcome-logo" alt="logo" />
+      <img src={`${process.env.PUBLIC_URL}/imgs/logo.svg`} className="Welcome-logo" alt="logo" />
       <h2>Welcome to React</h2>
     </div>
     <p className="Welcome-intro">

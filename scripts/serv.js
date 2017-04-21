@@ -58,7 +58,7 @@ function build(previousFileSizes) {
   })
 }
 
-if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+if (!checkRequiredFiles([paths.appIndexJs])) {
   process.exit(1)
 }
 
