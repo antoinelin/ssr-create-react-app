@@ -11,6 +11,8 @@ const manifest = require('./../build/asset-manifest.json')
 
 const { webpackDev, webpackHot } = require('./middlewares/webpack-dev')
 
+const { analytics } = require('./middlewares/scripts')
+
 const app = express()
 app.server = http.createServer(app)
 
@@ -23,7 +25,7 @@ if (app.get('env') === 'development') {
 
 app.get('*', (req, res) => {
   const context = {}
-  res.send(buildApp(req, manifest['main.js'], manifest['main.css'], context))
+  res.send(buildApp(req, manifest['main.js'], manifest['main.css'], context, analytics))
 })
 
 app.server.listen(app.get('port'))

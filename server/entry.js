@@ -13,7 +13,7 @@ const getHtml = (location, context) => ReactDOMServer.renderToString(
   </StaticRouter>,
 )
 
-const buildApp = ({ html, scriptFilename, styleFilename }) => {
+const buildApp = ({ html, scriptFilename, styleFilename, analytics }) => {
   return `
     <html lang="en">
       <head>
@@ -21,6 +21,7 @@ const buildApp = ({ html, scriptFilename, styleFilename }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>FROM THE SERVER</title>
         <link rel="stylesheet" href=${styleFilename}>
+        ${analytics()}
       </head>
       <body>
         <div id="root">${html}</div>
@@ -30,7 +31,7 @@ const buildApp = ({ html, scriptFilename, styleFilename }) => {
   `
 }
 
-export default (req, scriptFilename, styleFilename, context) => {
+export default (req, scriptFilename, styleFilename, context, analytics) => {
   const html = getHtml(req.url, context)
-  return buildApp({ html, scriptFilename, styleFilename })
+  return buildApp({ html, scriptFilename, styleFilename, analytics })
 }

@@ -9,10 +9,17 @@ const chalk = require('chalk')
 const clearConsole = require('react-dev-utils/clearConsole')
 
 const isInteractive = process.stdout.isTTY
-const cacheTime = 86400000*7
+const cacheTime = 86400000 * 7 // 7 days
+
+process.env.PORT = 8000
+// Add here G.Analytics ID
+process.env.GOOGLE_ANALYTICS_ID = 'UA-97812447-1'
+process.env.MIDDLEWARES = ['WEBPACK-DEV', 'WEBPACK-HOT']
 
 export default (app) => {
   app.set('port', (process.env.PORT || 3000))
+  app.set('analytics', (process.env.GOOGLE_ANALYTICS_ID || null))
+  app.set('middlewares', (process.env.MIDDLEWARES || null))
 
   if (app.get('env') === 'production') {
     app.use(gzip())
@@ -39,10 +46,14 @@ export default (app) => {
   console.log(chalk.green('Starting the Express server... '))
   console.log()
   console.log(`ENV: ${chalk.cyan(app.get('env'))}`)
-  console.log()
-  console.log(`MIDDLEWARES: ${app.get('env') === 'development' ? chalk.cyan(['WEBPACK-DEV'], ['WEBPACK-HOT']) : chalk.cyan('none')}`)
+  if (app.get('env') === 'development') {
+    console.log()
+    console.log(`MIDDLEWARES: ${chalk.cyan(app.get('middlewares'))}`)  
+  }
   console.log()
   console.log(`PORT: ${chalk.cyan(app.get('port'))}`)
+  console.log()
+  console.log(`ANALYTICS_ID: ${chalk.cyan(app.get('analytics'))}`)
   console.log()
   console.log(chalk.green('Server successfully started! ') + emoji.get('raised_hands'))
   console.log()
