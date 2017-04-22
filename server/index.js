@@ -23,7 +23,7 @@ if (app.get('env') === 'development') {
 
 app.get('*', (req, res) => {
   const context = {}
-  res.end(buildApp(req, manifest['main.js'], manifest['main.css'], context))
+  res.send(buildApp(req, manifest['main.js'], manifest['main.css'], context))
 })
 
 app.server.listen(app.get('port'))

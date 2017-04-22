@@ -9,6 +9,7 @@ const chalk = require('chalk')
 const clearConsole = require('react-dev-utils/clearConsole')
 
 const isInteractive = process.stdout.isTTY
+const cacheTime = 3600
 
 export default (app) => {
   app.set('port', (process.env.PORT || 3000))
@@ -21,8 +22,13 @@ export default (app) => {
   app.use(bodyParser.urlencoded({ extended: true }))
   app.use(methodOverride())
   app.set('trust proxy', 'loopback')
-
-  app.use(express.static(path.join(__dirname, '..', '..', 'build')))
+  app.use((req, res, next) => {
+    if (req.url.match(/^\/(css|js|img|font)\/.+/)) {
+      res.setHeader('Cache-Control', `public, max-age=${cacheTime}`)
+    }
+    next()
+  })
+  app.use(express.static(path.join(__dirname, '..', '..', 'build'), { maxAge: cacheTime }))
   // Displayed logs
   // -------------------o
   if (isInteractive) {
