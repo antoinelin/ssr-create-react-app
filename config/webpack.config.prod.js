@@ -12,10 +12,6 @@ const shouldUseRelativeAssetPaths = publicPath === './'
 const publicUrl = publicPath.slice(0, -1)
 const env = getClientEnvironment(publicUrl)
 
-if (env.stringified['process.env'].NODE_ENV !== '"production"') {
-  throw new Error('Production builds must have NODE_ENV=production.')
-}
-
 const cssFilename = 'static/css/[name].[contenthash:8].css'
 
 const extractTextPluginOptions = shouldUseRelativeAssetPaths

@@ -23,6 +23,8 @@ export default (app) => {
   app.set('trust proxy', 'loopback')
 
   app.use(express.static(path.join(__dirname, '..', '..', 'build')))
+  // Displayed logs
+  // -------------------o
   if (isInteractive) {
     clearConsole()
   }
@@ -31,6 +33,8 @@ export default (app) => {
   console.log(chalk.green('Starting the Express server... '))
   console.log()
   console.log(`ENV: ${chalk.cyan(app.get('env'))}`)
+  console.log()
+  console.log(`MIDDLEWARES: ${app.get('env') === 'development' ? chalk.cyan(['WEBPACK-DEV'], ['WEBPACK-HOT']) : chalk.cyan('none')}`)
   console.log()
   console.log(`PORT: ${chalk.cyan(app.get('port'))}`)
   console.log()
