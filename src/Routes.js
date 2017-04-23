@@ -3,7 +3,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import Welcome from './components/Welcome'
+import { App, About } from './pages'
 
 import './ressources/theme/stylesheets/Default.css'
 
@@ -12,17 +12,12 @@ const Routes: React.StatelessComponent<{}> = () => (
     <Route
       exact
       path="/"
-      component={Welcome}
+      component={App}
     />
     <Route
       exact
       path="/about"
-      render={() => (
-        <div>
-          <h1>About</h1>
-          <Link to="/">Home</Link>
-        </div>
-      )}
+      component={About}
     />
     <Route
       render={() => (

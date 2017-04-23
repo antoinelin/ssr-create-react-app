@@ -1,6 +1,7 @@
 const React = require('react')
 const ReactDOMServer = require('react-dom/server')
 const { StaticRouter } = require('react-router')
+const { Helmet } = require('react-helmet')
 
 const Routes = require('./../src/Routes').default
 
@@ -13,13 +14,14 @@ const getHtml = (location, context) => ReactDOMServer.renderToString(
   </StaticRouter>,
 )
 
-const buildApp = ({ html, scriptFilename, styleFilename, analytics }) => {
+const buildApp = ({ html, scriptFilename, styleFilename, analytics, headAssets }) => {
   return `
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>FROM THE SERVER</title>
+        ${headAssets.title.toString()}
+        ${headAssets.meta.toString()}
+        ${headAssets.link.toString()}
         <link rel="stylesheet" href=${styleFilename}>
         ${analytics()}
       </head>
@@ -33,5 +35,6 @@ const buildApp = ({ html, scriptFilename, styleFilename, analytics }) => {
 
 export default (req, scriptFilename, styleFilename, context, analytics) => {
   const html = getHtml(req.url, context)
-  return buildApp({ html, scriptFilename, styleFilename, analytics })
+  const headAssets = Helmet.renderStatic()
+  return buildApp({ html, scriptFilename, styleFilename, analytics, headAssets })
 }
