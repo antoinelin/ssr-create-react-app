@@ -3,9 +3,9 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import RoadMap from './RoadMap'
+import RoadMap from '~ressources/RoadMap'
 
-import './ressources/theme/stylesheets/Default.css'
+import '@theme/stylesheets/Default.css' // eslint-disable-line
 
 const Routes: React.StatelessComponent<{}> = () => (
   <Switch>

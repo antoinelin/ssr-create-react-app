@@ -37,6 +37,7 @@ module.exports = {
     alias: {
       'react-native': 'react-native-web',
       '~components': path.resolve(__dirname, '../src/components'),
+      '~pages': path.resolve(__dirname, '../src/pages'),
       '~ressources': path.resolve(__dirname, '../src/ressources'),
       '~src': path.resolve(__dirname, '../src'),
       '@theme': path.resolve(__dirname, '../src/ressources/theme'),

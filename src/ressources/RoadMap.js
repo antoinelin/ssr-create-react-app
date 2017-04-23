@@ -1,4 +1,4 @@
-import { App, About } from './pages'
+import { App, About } from '~pages'
 
 const RoadMap = [
   {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { appMeta } from './../meta'
 import Page from './../Page'
 
-import Welcome from './../../components/Welcome'
+import Welcome from '~components/Welcome' // eslint-disable-line
 
 class App extends Component {
   getMetaData() {

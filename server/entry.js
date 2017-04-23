@@ -3,7 +3,7 @@ const ReactDOMServer = require('react-dom/server')
 const { StaticRouter } = require('react-router')
 const { Helmet } = require('react-helmet')
 
-const Routes = require('./../src/Routes').default
+const Routes = require('~src/Routes').default
 
 const getHtml = (location, context) => ReactDOMServer.renderToString(
   <StaticRouter
