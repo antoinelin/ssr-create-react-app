@@ -44,6 +44,26 @@ const commonLoaders = [
       name: 'static/media/[name].[hash:8].[ext]',
     },
   },
+  {
+    test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url',
+    query: { limit: 10000, mimetype: 'application/font-woff', name: 'static/fonts/[name]/[name].[ext]' },
+  },
+  {
+    test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url',
+    query: { limit: 10000, mimetype: 'application/font-woff', name: 'static/fonts/[name]/[name].[ext]' },
+  },
+  {
+    test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'url',
+    query: { limit: 10000, mimetype: 'application/octet-stream', name: 'static/fonts/[name]/[name].[ext]' },
+  },
+  {
+    test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+    loader: 'file',
+    query: { name: 'static/fonts/[name]/[name].[ext]' },
+  },
 ]
 const commonPlugins = [
   new InterpolateHtmlPlugin(env.raw),
@@ -98,6 +118,7 @@ module.exports = [{
       '@theme': path.resolve(__dirname, '../src/ressources/theme'),
     },
   },
+  progress: true,
   module: {
     loaders: [
       commonLoaders.concat([
@@ -173,6 +194,7 @@ module.exports = [{
       '@theme': path.resolve(__dirname, '../src/ressources/theme'),
     },
   },
+  progress: true,
   module: {
     loaders: [
       commonLoaders.concat([

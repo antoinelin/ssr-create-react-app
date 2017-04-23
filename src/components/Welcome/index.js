@@ -11,7 +11,7 @@ const Welcome: React.StatelessComponent<{}> = () => (
       To get started, edit <code>src/App.js</code> and save to reload.
     </p>
     <Link to="/about">About</Link>
-    <style jsx>{`
+    <style>{`
       .Welcome {
         text-align: center;
       }

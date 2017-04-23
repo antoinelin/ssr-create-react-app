@@ -11,7 +11,7 @@ const clearConsole = require('react-dev-utils/clearConsole')
 const isInteractive = process.stdout.isTTY
 const cacheTime = 86400000 * 7 // 7 days
 
-process.env.PORT = 8000
+process.env.PORT = 3000
 // Add here G.Analytics ID
 process.env.GOOGLE_ANALYTICS_ID = 'UA-97812447-1'
 process.env.MIDDLEWARES = ['WEBPACK-DEV', 'WEBPACK-HOT']

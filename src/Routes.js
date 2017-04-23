@@ -3,22 +3,15 @@ import React from 'react'
 import { Route, Switch } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { App, About } from './pages'
+import RoadMap from './RoadMap'
 
 import './ressources/theme/stylesheets/Default.css'
 
 const Routes: React.StatelessComponent<{}> = () => (
   <Switch>
-    <Route
-      exact
-      path="/"
-      component={App}
-    />
-    <Route
-      exact
-      path="/about"
-      component={About}
-    />
+    {RoadMap.map(route => (
+      <Route {...route} />
+    ))}
     <Route
       render={() => (
         <div>

@@ -1,5 +1,4 @@
-require('import-export')
-require('babel-core/register')({ presets: ['es2015', 'react', 'node6'] })
+require('./../server.babel')
 
 const http = require('http')
 const express = require('express')

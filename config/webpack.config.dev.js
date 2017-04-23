@@ -12,12 +12,17 @@ const publicPath = '/'
 const publicUrl = ''
 const env = getClientEnvironment(publicUrl)
 
-
 module.exports = {
-  devtool: 'cheap-module-source-map',
+  devtool: 'eval-source-map',
+  server: {
+    port: 3000,
+    url: 'localhost',
+    hot: true,
+    historyApiFallback: true,
+  },
   entry: [
-    require.resolve('react-dev-utils/webpackHotDevClient'),
     require.resolve('./polyfills'),
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     paths.appIndexJs,
   ],
   output: {
@@ -37,6 +42,7 @@ module.exports = {
       '@theme': path.resolve(__dirname, '../src/ressources/theme'),
     },
   },
+  progress: true,
   module: {
     preLoaders: [
       {
@@ -47,41 +53,33 @@ module.exports = {
     ],
     loaders: [
       {
-        exclude: [
-          /\.html$/,
-          /\.(js|jsx)(\?.*)?$/,
-          /\.css$/,
-          /\.json$/,
-          /\.svg$/,
-        ],
+        exclude: [/\.html$/, /\.(js|jsx)(\?.*)?$/, /\.css$/, /\.json$/, /\.svg$/],
         loader: 'url',
-        query: {
-          limit: 10000,
-          name: 'static/media/[name].[hash:8].[ext]',
-        },
+        query: { limit: 10000, name: 'static/media/[name].[hash:8].[ext]' },
+      },
+      { test: /\.(js|jsx)$/, include: paths.appSrc, loader: 'babel', query: { cacheDirectory: true } },
+      { test: /\.css$/, loader: 'style!css?importLoaders=1!postcss' },
+      { test: /\.json$/, loader: 'json' },
+      { test: /\.svg$/, loader: 'file', query: { name: 'static/media/[name].[hash:8].[ext]' } },
+      {
+        test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: { limit: 10000, mimetype: 'application/font-woff', name: 'static/fonts/[name]/[name].[ext]' },
       },
       {
-        test: /\.(js|jsx)$/,
-        include: paths.appSrc,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-        },
+        test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: { limit: 10000, mimetype: 'application/font-woff', name: 'static/fonts/[name]/[name].[ext]' },
       },
       {
-        test: /\.css$/,
-        loader: 'style!css?importLoaders=1!postcss',
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url',
+        query: { limit: 10000, mimetype: 'application/octet-stream', name: 'static/fonts/[name]/[name].[ext]' },
       },
       {
-        test: /\.json$/,
-        loader: 'json',
-      },
-      {
-        test: /\.svg$/,
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         loader: 'file',
-        query: {
-          name: 'static/media/[name].[hash:8].[ext]',
-        },
+        query: { name: 'static/fonts/[name]/[name].[ext]' },
       },
     ],
   },
@@ -104,7 +102,9 @@ module.exports = {
       template: paths.appHtml,
     }),
     new webpack.DefinePlugin(env.stringified),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
     new CaseSensitivePathsPlugin(),
     new WatchMissingNodeModulesPlugin(paths.appNodeModules),
   ],
