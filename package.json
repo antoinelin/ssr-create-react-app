@@ -27,7 +27,7 @@
     "cross-spawn": "4.0.2",
     "css-loader": "0.26.1",
     "detect-port": "1.1.0",
-    "dotenv": "2.0.0",
+    "dotenv": "^4.0.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-react-app": "^0.6.2",
@@ -69,7 +69,7 @@
     "whatwg-fetch": "2.0.2"
   },
   "scripts": {
-    "dev": "node scripts/dev.js",
+    "dev": "node scripts/build.js && node scripts/dev.js ",
     "build": "node scripts/build.js && node scripts/serv.js",
     "test": "node scripts/test.js --env=jsdom",
     "start": "NODE_ENV=production node -- server/index.js",

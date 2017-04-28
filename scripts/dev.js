@@ -95,7 +95,7 @@ function runDevServer(host, port, protocol) {
   const devServer = express()
   devServer.use(express.static(config.output.path))
   devServer.use(require('webpack-dev-middleware')(compiler, {
-    contentBase: paths.appPublic,
+    contentBase: paths.appBuild,
     publicPath: config.output.publicPath,
     noInfo: true,
     stats: { colors: true },
