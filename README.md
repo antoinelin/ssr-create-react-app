@@ -1,3 +1,4 @@
+[![dependencies Status](https://david-dm.org/toinelin/ssr-create-react-app/status.svg)](https://david-dm.org/toinelin/ssr-create-react-app)
 # SSR react-app
 
 This is my React universal application boilerplate based on the [Create React App](https://github.com/facebookincubator/create-react-app) bootstrap.
