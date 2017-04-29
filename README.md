@@ -12,6 +12,8 @@ Working on:
 
 Feedbacks are welcome !
 
+**I will develop doc ASAP**
+
 ## Stacks
 - [Node.js](https://nodejs.org/en/)
 - [Express](http://expressjs.com/fr/)
