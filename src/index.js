@@ -1,18 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-import 'react-router'
 import { BrowserRouter } from 'react-router-dom'
 
-import Routes from './Routes'
+import App from './containers'
 
-const App = () => (
-  <BrowserRouter>
-    <Routes />
-  </BrowserRouter>
-)
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
   document.getElementById('root'),
 )
 

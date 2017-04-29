@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { appMeta } from './../meta'
-import Page from './../Page'
+import Helmet from 'react-helmet'
+import { appMeta } from './meta'
 
 import Welcome from '~components/Welcome' // eslint-disable-line
 
-class App extends Component {
+class Home extends Component {
   getMetaData() {
     return {
-      title: 'Homepage | SSR React-app',
+      title: 'Homepage',
       meta: appMeta,
       link: this.pageLink(),
     }
@@ -19,11 +19,12 @@ class App extends Component {
 
   render() {
     return (
-      <Page {...this.getMetaData()}>
+      <div>
+        <Helmet {...this.getMetaData()} />
         <Welcome />
-      </Page>
+      </div>
     )
   }
 }
 
-export default App
+export default Home

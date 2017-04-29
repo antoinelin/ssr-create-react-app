@@ -93,11 +93,18 @@ function setupCompiler(host, port, protocol) {
 
 function runDevServer(host, port, protocol) {
   const devServer = express()
-  devServer.use(express.static(config.output.path))
+  devServer.use(express.static(paths.appPublic))
   devServer.use(require('webpack-dev-middleware')(compiler, {
     contentBase: paths.appBuild,
     publicPath: config.output.publicPath,
+    compress: true,
+    clientLogLevel: 'none',
+    hot: true,
     noInfo: true,
+    quiet: true,
+    watchOptions: {
+      ignored: /node_modules/
+    },
     stats: { colors: true },
   }))
   devServer.use(require('webpack-hot-middleware')(compiler, {

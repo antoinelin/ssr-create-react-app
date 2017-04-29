@@ -90,12 +90,8 @@ const commonAlias = {
   'react-native': 'react-native-web',
   '~components': path.resolve(__dirname, '../src/components'),
   '~ressources': path.resolve(__dirname, '../src/ressources'),
-  '~pages': path.resolve(__dirname, '../src/pages'),
   '~src': path.resolve(__dirname, '../src'),
-  '~actions': path.resolve(__dirname, '../src/actions'),
   '~containers': path.resolve(__dirname, '../src/containers'),
-  '~types': path.resolve(__dirname, '../src/types'),
-  '~constants': path.resolve(__dirname, '../src/constants'),
   '@theme': path.resolve(__dirname, '../src/ressources/theme'),
 }
 

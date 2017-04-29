@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 import { Link } from 'react-router-dom'
-import { aboutMeta } from './../meta'
-import Page from './../Page'
+import { aboutMeta } from './meta'
 
 class About extends Component {
   getMetaData() {
     return {
-      title: 'About | SSR React-app',
+      title: 'About',
       meta: aboutMeta,
       link: this.pageLink(),
     }
@@ -18,10 +18,11 @@ class About extends Component {
 
   render() {
     return (
-      <Page {...this.getMetaData()}>
+      <div>
+        <Helmet {...this.getMetaData()} />
         <h1>About</h1>
         <Link to="/">Home</Link>
-      </Page>
+      </div>
     )
   }
 }
