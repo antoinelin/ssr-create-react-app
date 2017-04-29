@@ -36,6 +36,8 @@ my-app/
     favicon.ico
   config/
     webpack
+    paths & env
+    jest/
   scripts/
     build.js
     dev.js
@@ -56,6 +58,8 @@ my-app/
         meta.js
         index.js
     ressources/
+    index.js
+    Routes.js
 ```
 
 ## Running the app localy
