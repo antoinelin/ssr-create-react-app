@@ -1,7 +1,8 @@
 # SSR react-app
 
 This is my React universal application boilerplate based on the [Create React App](https://github.com/facebookincubator/create-react-app) bootstrap.
-WIP : im still working on it, it is ready to use if you want to develop a server-rendered React app with it.
+
+**WIP** : im still working on it, it is ready to use if you want to develop a server-rendered React app with it.
 
 Working on:
 - Add Redux with reducers hot reloading and redux serverside implementation
