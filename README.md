@@ -80,5 +80,5 @@ $ yarn dev
 ```
 Run build:
 ```shell
-$ yarn prod dev && yarn start
+$ yarn build && yarn start
 ```
